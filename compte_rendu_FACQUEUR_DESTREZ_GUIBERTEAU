@@ -34,4 +34,6 @@ ETAPE n°5:
 
 En Shell on fait un 'gpio readall' pour afficher les ports GPIO du RPI et leurs  numéros correspondants. En shell pour accéder au port on prend le numéro associé dans 'Name' qui était '1' associé au BCM '18' qui est le numéro de port sur lequel notre LED est branchée. Puis on change le IN en OUT pour que le port soit en sortie et que la LED s'allume.
 
+ETAPE n°6:
 
+1/ Nous avons utilisé la librairie wiringPI dans examples/blink.c
