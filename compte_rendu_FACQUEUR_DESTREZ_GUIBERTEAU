@@ -4,7 +4,34 @@ FACQUEUR Axel
 
 				COMPTE RENDU TP N°1
 
+ETAPE n°1:
 
-	Afin de réaliser une application conviviale qui boucle en permanenece jusqu'à une demande d'arrêt par l'utilisateur, nous nous proposons de partir sur un "switch case" avec un petit affichage qui donnera les options possibles (saisir texte, traduire en texte, traduire matériellement, arrêter).
+	Afin de réaliser une application conviviale qui boucle en permanenece jusqu'à une demande d'arrêt par l'utilisateur, nous nous proposons de partir sur un "switch case" avec un petit affichage qui donnera les options possibles (saisir texte, traduire en texte, traduire matériellement, arrêter) dans le main.
+On développe toute la partie traduction dans morse.c. On a fait un convertisseur d'alphabet classique vers le morse via un tableau à double entrée qui commence avec le '.' (point) et s'arrête au 'Z' (ascii 90). Tous les caractères de la chaine sont de abse passés en majuscule avec "toupper" afin d'éviter de mettre les minuscules et majuscules dans le tableau en morse.
+
 
 Commande de compilation : gcc morse.c main.c -o morse
+
+ETAPE n°2:
+	
+	Les ports GPIO sont les ports d'entrée/sortie du Raspberry qui permettent de brancher des modules extérieurs et de les mettre en intéraction.
+
+	URL: https://www.raspberrypi.org/documentation/usage/gpio/README.md
+
+
+
+
+ETAPE n°4:
+
+1/ La librairie propose des aides pour gérer les ports GPIO afin de piloter des composants extérieurs.
+2/ L'auteur est Gordon
+3/ Il a été harcelé par des internautes qui utilisaient sa librairie mais se plaignaient de ne pas comprendre alors que tout était précisé, il n'y avait qu'à chercher.
+4/ Oui c'est installé. (on peut vérifier avec 'gpio -v' qui nous affiche la version installée) Il y a des fichiers dans '/sys/class/gpio'
+5/ Les sources ne sont pas présentes, il faut les récupérer sur GitHub.
+6/ Les sources contiennent des exemples et de la doc.
+
+ETAPE n°5:
+
+En Shell on fait un 'gpio readall' pour afficher les ports GPIO du RPI et leurs  numéros correspondants. En shell pour accéder au port on prend le numéro associé dans 'Name' qui était '1' associé au BCM '18' qui est le numéro de port sur lequel notre LED est branchée. Puis on change le IN en OUT pour que le port soit en sortie et que la LED s'allume.
+
+
