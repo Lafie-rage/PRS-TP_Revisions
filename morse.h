@@ -1,7 +1,7 @@
 /* contient la conversion d'un caractère (ascii entre 46 et 90) en morse.
 L'indexation commence avec "."[0] et termine à "Z"[44]
 */
-const char MORSE[44][7] = {
+const char MORSE[45][7] = {
   ".-.-.-", // .
   "", //      ON IGNORE CE CARACTERE
   "-----", // 0
@@ -46,9 +46,9 @@ const char MORSE[44][7] = {
   ".--", // W
   "-..-", // X
   "-.--", // Y
-  "--..", // Z
-}
+  "--.." // Z
+};
 
-const int TAILLE_CARACTERE_MORSE = 7
+const int TAILLE_CARACTERE_MORSE = 7;
 
 char* traductionVersMorse(char* message);
