@@ -6,3 +6,5 @@ FACQUEUR Axel
 
 
 	Afin de réaliser une application conviviale qui boucle en permanenece jusqu'à une demande d'arrêt par l'utilisateur, nous nous proposons de partir sur un "switch case" avec un petit affichage qui donnera les options possibles (saisir texte, traduire en texte, traduire matériellement, arrêter).
+
+Commande de compilation : gcc morse.c main.c -o morse
