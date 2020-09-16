@@ -1,9 +1,10 @@
 all : morse0
 
-morse0 : main.o
+morse0 : morse.o main.c
 	gcc $^ -o morse
 
-main.o : main.c
+
+morse.o : morse.c
 	gcc $^ -c
 
 clean :

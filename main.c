@@ -6,14 +6,14 @@ Version ..... : V0.1 du 16/09/2020
 ********************************************************/
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+/*#include <string.h>
+#include <ctype.h>*/
+#include "morse.h"
 
 /* contient la conversion d'un caractère (ascii entre 46 et 90) en morse.
 L'indexation commence avec "."[0] et termine à "Z"[44]
 */
-const char MORSE[45][7] = {
+/*const char MORSE[45][7] = {
   ".-.-.-\0", // .
   "", //      ON IGNORE CE CARACTERE
   "-----\0", // 0
@@ -61,16 +61,11 @@ const char MORSE[45][7] = {
   "--..\0" // Z
 };
 
-const int TAILLE_CARACTERE_MORSE = 7;
+const int TAILLE_CARACTERE_MORSE = 7;*/
 
 const int MAX_SENTENCE_LENGTH = 250;
 
-const char* traductionVersMorse(char* message);
-
-char t(int Mod);
-char p(int Mod);
-void traduction(char lettre, int Mod);
-
+//const char* traductionVersMorse(char* message);
 
 int main()
 {
@@ -123,31 +118,4 @@ int main()
 		}
 	}
 	return 0;
-}
-
-
-const char* traductionVersMorse(char* message) {
-  int i = 0,
-	  j = 0;
-  char *messageTraduit = malloc((strlen(message) -1) * TAILLE_CARACTERE_MORSE + 1);
-  char caractereMorse[TAILLE_CARACTERE_MORSE];
-  int cmpMessageTraduit = 0;
-  while(message[i] != '\0') {
-    message[i] = toupper(message[i]);
-    i++;
-  }
-  i = 0;
-  while(message[i] != '\n') { // Traduction du message en morse
-    if(message[i] == ' ') strcpy(caractereMorse, " / ");
-    else strcpy(caractereMorse, MORSE[message[i]-46]);
-    while(caractereMorse[j] != '\0') {
-      messageTraduit[cmpMessageTraduit] = caractereMorse[j];
-      cmpMessageTraduit++;
-      j++;
-    }
-    j = 0;
-    i++;
-   messageTraduit[cmpMessageTraduit++] = ' ';
-  }
-  return messageTraduit;
 }
