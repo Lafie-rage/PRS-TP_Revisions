@@ -1,48 +1,59 @@
-/*
- * blink.c:
- *	Standard "blink" program in wiringPi. Blinks an LED connected
- *	to the first GPIO pin.
- *
- * Copyright (c) 2012-2013 Gordon Henderson. <projects@drogon.net>
- ***********************************************************************
- * This file is part of wiringPi:
- *	https://projects.drogon.net/raspberry-pi/wiringpi/
- *
- *    wiringPi is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU Lesser General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    wiringPi is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU Lesser General Public License for more details.
- *
- *    You should have received a copy of the GNU Lesser General Public License
- *    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
- ***********************************************************************
- */
+/*******************************************************
+Nom ......... : blink_del.c
+Role ........ : Test de la del GPIO 18 en la faisant clignoter
+Auteur ...... : Valentin Guiberteau Axel Facqueur Corentin Destrez
+Version ..... : V0.1 du 17/09/2020
+Commentaire . : Code inspiré des exemples sur https://github.com/WiringPi/WiringPi/blob/master/examples/blink.c
+********************************************************/
 
 #include <stdio.h>
 #include <wiringPi.h>
+#include <string.h>
 
-// LED Pin - wiringPi pin 0 is BCM_GPIO 17.
 
-#define	LED	18
 
-int main (void)
+int main (int argc, char *argv[])
 {
-  printf ("Raspberry Pi blink\n") ;
-
+  int ledNumber;
+  if(argc != 2) {
+    puts("Veuillez uniquement entrer le numéro wPi du port sur lequel la DEL est branchee.");
+    return 1;
+  }
+  
+  if (strlen(argv[1]) > 2) {
+    puts("Le numéro ne peut être composé que de 2 chiffres au plus");
+    return 1;
+  }
+  
+  if (strlen(argv[1]) == 2) {
+    if(argv[1][0] >= '0' && argv[1][0] <= '9')
+      ledNumber = 10 * (argv[1][0] - 48);
+    else
+      puts("Ce ne peut-être qu'un numéro");
+    if(argv[1][1] >= '0' && argv[1][1] <= '9')
+      ledNumber = argv[1][1] - 48;
+    else
+      puts("Ce ne peut-être qu'un numéro");
+  }
+  else {
+    if(argv[1][0] >= '0' && argv[1][0] <= '9')
+      ledNumber = argv[1][0] - 48;
+    else
+      puts("Ce ne peut-être qu'un numéro");
+  }
+  
+  printf("%d\n", ledNumber);
+  
   wiringPiSetup () ;
-  pinMode (LED, OUTPUT) ;
+  pinMode (ledNumber, OUTPUT) ;
+
 
   for (;;)
-  {
-    digitalWrite (LED, HIGH) ;	// On
-    delay (500) ;		// mS
-    digitalWrite (LED, LOW) ;	// Off
-    delay (500) ;
+  { // temps modifié pour correspondre au temps dans le script bash
+    digitalWrite (ledNumber, HIGH) ;	// On
+    delay (1000) ;		// mS
+    digitalWrite (ledNumber, LOW) ;	// Off
+    delay (1000) ;
   }
   return 0 ;
 }
