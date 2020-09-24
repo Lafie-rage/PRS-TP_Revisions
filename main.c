@@ -96,13 +96,6 @@ int main()
             case 2:
                 printf("Vous avez choisi la traduction textuelle\n\n");
                 Mod=0;
-                /*while(mot[i]!='\0')
-                {
-                    printf("%c : ", mot[i]);
-                    traduction(mot[i], Mod);
-                    printf("\n");
-                    i++;
-                }*/
                 printf("%s\n\n\n", traductionVersMorse(mot));
                 i=0;
                 break;

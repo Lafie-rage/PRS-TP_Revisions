@@ -3,6 +3,9 @@
 #include <ctype.h>
 #include "morse.h"
 
+/* contient la conversion d'un caractère (ascii entre 46 et 90) en morse.
+L'indexation commence avec "."[0] et termine à "Z"[44]
+*/
 const char MORSE[45][7] = {
   ".-.-.-", // .
   "", //      ON IGNORE CE CARACTERE
@@ -59,7 +62,7 @@ const char* traductionVersMorse(char* message) {
   char *messageTraduit = malloc((strlen(message) -1) * TAILLE_CARACTERE_MORSE + 1);
   char caractereMorse[TAILLE_CARACTERE_MORSE];
   int cmpMessageTraduit = 0;
-  while(message[i] != '\0') {
+  while(message[i] != '\0') { // Mets en upper case tout le message
     message[i] = toupper(message[i]);
     i++;
   }
